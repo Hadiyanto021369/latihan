@@ -1,0 +1,112 @@
+﻿<html>
+<head>
+	<title>UAS Ragil Hadiworo</title>
+</head>
+<body>
+	<center>
+		<h3>Membuat tag HTML dari string Javascript</h3>
+		<label>Berapa jumlah kata: </label>
+		<input type="text" id="jml">
+		<button id='submit' onclick="inputkata()" style="display:block;">OK</button>
+		<div id="teks"></div>
+		<button onclick="gabung()" id='gabung' style="display:block;">Gabungkan</button>
+		<div id='hasil'></div>
+	</center>
+
+	<div class="menubar" style=" margin-top: 40px; text-align: center; float:left; width:100%; height:70px; display: grid; grid-template-areas: 'menubar menubar menubar menubar menubar'; background: #888; box-sizing: border-box; border-radius: 15px;position:relative">
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center;border-radius: 15px 0 0 15px; background: #999; box-sizing: border-box; transition: .5s;" class="red" onmouseover="hov('red')" onmouseout="balik('red')" id="red">Merah</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;" class="yellow" id="yellow" onmouseover="hov('yellow')" onmouseout="balik('yellow')">Kuning</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;" class="green" id="green" onmouseover="hov('green')" onmouseout="balik('green')">Hijau</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;" class="blue" id="blue" onmouseover="hov('blue')" onmouseout="balik('blue')">Biru</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;border-radius: 0 15px 15px 0;" class="violet" id="violet" onmouseover="hov('violet')" onmouseout="balik('violet')">Ungu</div>
+	</div>
+
+	<center>
+		<table align='center' valign='middle' border='4' cellspacing='4'>
+			<tr>
+			<td><img onclick=tukar(1) id='t1' src='1.png'></td>
+			<td colspan='3' rowspan = '2'><img onclick=tukar(10) id='t10' src='10.png'></td>
+			<td><img onclick=tukar(2)  id='t2' src='2.png'></td>
+			</tr>
+			<tr>
+			<td><img  onclick=tukar(3)  id='t3' src='3.png'></td>
+			<td><img onclick=tukar(4)  id='t4' src='4.png'></td>
+			</tr>
+			<tr>
+			<td><img onclick=tukar(5)  id='t5' src='5.png'></td>
+			<td><img onclick=tukar(6)  id='t6' src='6.png'></td>
+			<td><img onclick=tukar(7)  id='t7' src='7.png'></td>
+			<td><img onclick=tukar(8)  id='t8' src='8.png'></td>
+			<td><img onclick=tukar(9)  id='t9' src='9.png'></td>
+			</tr>
+		</table>
+	</center>
+	<center>
+		<h1>Membuat Segiempat</h1>
+		Masukkan Karakter: <input type="text" id="chara" maxlength='1'><br>
+		Masukkan Jumlah: <input type="text" id="limit" maxlength='1'><br>
+		<button onclick="astrk()">Ok</button><br>
+		<button onclick="rst()">reset</button><br>
+		<label id='result'></label>
+		<div class="no5" style="margin-top: 50px;">
+			<button>NOMOR 5</button>
+		</div>
+	</center>
+	<div class="scroll" style="margin-bottom: 100px;"></div>
+	<script>
+		function inputkata(){
+			let limit = document.getElementById('jml').value;
+			for(let x=1 ; x<= +limit ; x++){
+				let fric = document.getElementById('teks');
+				fric.innerHTML+="<label>Kata ke-"+x+"</label><input type='text' class='kata'><br>"
+			}
+		}
+		function gabung(){
+			let limit = document.getElementById('jml').value;
+			let m = document.getElementById('hasil');
+			let r = "<label>";
+			for(let s=0 ; s<+limit ; s++){
+				let x = document.getElementsByClassName('kata')[s].value;
+				//alert(x);
+				m.innerHTML+=r + x + "&nbsp; "+" </label>";
+			}
+			
+		}
+		function hov(color){
+			let x = document.getElementById(color);
+			x.style.background = color;
+		}
+		function balik(color){
+			let x = document.getElementById(color);
+			x.style.background = "#999";
+		}
+		function tukar(pos){
+			let r = document.getElementById("t"+pos);
+			let mid = document.getElementById('t10');
+			let temp = r.src;
+			r.src = mid.src;
+			mid.src = temp;
+		}
+		function astrk(){
+			let x = document.getElementById('chara').value;
+			let y = document.getElementById('limit').value;
+			let o = "";
+			for(let p=0; p<+y ; p++){
+				for(let q=0; q<+y ; q++){
+					
+					if(p==0 || q== 0 || p==+y-1 || q==+y-1){
+						o+=x;
+					}else{
+						o+="&nbsp;";
+					}
+				}
+				o+="<br>";
+			}
+			document.getElementById('result').innerHTML+=o;
+		}
+		// function no5(){
+
+		// }
+	</script>
+</body>
+</html>

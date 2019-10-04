@@ -1,0 +1,60 @@
+﻿<html>
+<head>
+	<title>UAS Ragil Hadiworo</title>
+</head>
+<body>
+	<center>
+		<h3>Membuat tag HTML dari string Javascript</h3>
+		<label>Berapa jumlah kata: </label>
+		<input type="text" id="jml">
+		<button id='submit' onclick="inputkata()" style="display:block;">OK</button>
+		<div id="teks"></div>
+		<button onclick="gabung()" id='gabung' style="display:block;">Gabungkan</button>
+		<div id='hasil'></div>
+	</center>
+
+	<div class="menubar" style=" margin-top: 40px; text-align: center; float:left; width:100%; height:70px; display: grid; grid-template-areas: 'menubar menubar menubar menubar menubar'; background: #888; box-sizing: border-box; border-radius: 15px;position:relative">
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center;border-radius: 15px 0 0 15px; background: #999; box-sizing: border-box; transition: .5s;" class="red" onmouseover="hov('red')" onmouseout="balik('red')" id="red">Merah</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;" class="yellow" id="yellow" onmouseover="hov('yellow')" onmouseout="balik('yellow')">Kuning</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;" class="green" id="green" onmouseover="hov('green')" onmouseout="balik('green')">Hijau</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;" class="blue" id="blue" onmouseover="hov('blue')" onmouseout="balik('blue')">Biru</div>
+		<div style="width: 100%;display:flex; justify-content: center; align-items:center; background: #999; box-sizing: border-box; transition: .5s;border-radius: 0 15px 15px 0;" class="violet" id="violet" onmouseover="hov('violet')" onmouseout="balik('violet')">Ungu</div>
+	</div>
+
+	<center>
+		<table>
+			<tr>
+			<td><img id='1' src='//unsplash.it/100/70/'></td>
+			</tr>
+		</table>
+	</center>
+	<script>
+		function inputkata(){
+			let limit = document.getElementById('jml').value;
+			for(let x=1 ; x<= +limit ; x++){
+				let fric = document.getElementById('teks');
+				fric.innerHTML+="<label>Kata ke-"+x+"</label><input type='text' class='kata'><br>"
+			}
+		}
+		function gabung(){
+			let limit = document.getElementById('jml').value;
+			let m = document.getElementById('hasil');
+			let r = "<label>";
+			for(let s=0 ; s<+limit ; s++){
+				let x = document.getElementsByClassName('kata')[s].value;
+				//alert(x);
+				m.innerHTML+=r + x + "&nbsp; "+" </label>";
+			}
+			
+		}
+		function hov(color){
+			let x = document.getElementById(color);
+			x.style.background = color;
+		}
+		function balik(color){
+			let x = document.getElementById(color);
+			x.style.background = "#999";
+		}
+	</script>
+</body>
+</html>
